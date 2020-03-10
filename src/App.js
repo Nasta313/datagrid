@@ -15,7 +15,18 @@ export default class App extends React.Component {
     }
   }
 
-  
+  onSort = sortField => {
+    console.log(sortField);
+    const cloneData = this.state.data.concat();
+    const sortType = this.state.sort === 'asc' ? 'desc' : 'asc';
+    const orderedData = _.orderBy(cloneData, sortField, sortType);
+
+    this.setState({
+      data: orderedData,
+      sort: sortType,
+      sortField
+    })
+  }
 
   render() {
     return (
