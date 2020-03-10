@@ -10,13 +10,12 @@ export default class App extends React.Component {
   
     this.state = {
       data: data,
-      sort: 'asc',  // 'desc'
+      sort: 'sort',  // 'asc/desc'
       sortField: 'id', // поле по умолчанию
     }
   }
 
   onSort = sortField => {
-    console.log(sortField);
     const cloneData = this.state.data.concat();
     const sortType = this.state.sort === 'asc' ? 'desc' : 'asc';
     const orderedData = _.orderBy(cloneData, sortField, sortType);
@@ -32,9 +31,11 @@ export default class App extends React.Component {
     return (
       <div className="container">
         <h1 className="text-center h1 m-5">Datagrid</h1>
-        <table className="table table-bordered table-sm table-sm-responsive">
+        <table className="table table-bordered">
           <Thead 
             cb={this.onSort}
+            sort={this.state.sort}
+            sortField={this.state.sortField}
           />
           <Tbody data={this.state.data}/>
         </table>

@@ -1,12 +1,26 @@
 import React from 'react';
+import './index.css';
 
-const Thead = ({ cb }) => {
+const Thead = ({ cb, sortField, sort }) => {
   return (
-    <thead>
+    <thead className="thead-dark text-center">
       <tr>
         <th onClick={cb.bind(null, 'id')}>Rank</th>
-        <th onClick={cb.bind(null, 'firstName')}>First Name</th>
-        <th onClick={cb.bind(null, 'lastName')}>Last Name</th>
+
+        <th onClick={cb.bind(null, 'firstName')}>
+          <span>First Name</span>
+          {(sortField === 'firstName') ?
+           <span className={`icon-${sort}`}></span> :
+           <span className='icon-sort'></span>}
+        </th>
+
+        <th onClick={cb.bind(null, 'lastName')}>
+          <span>Last Name</span>
+          {(sortField === 'lastName') ?
+           <span className={`icon-${sort}`}></span> :
+           <span className='icon-sort'></span>}
+        </th>
+
         <th onClick={cb.bind(null, 'id')}>Id</th>
         <th onClick={cb.bind(null, 'profession')}>Profession</th>
         <th onClick={cb.bind(null, 'city')}>City</th>
