@@ -4,6 +4,7 @@ import Tbody from './components/Tbody';
 import { data } from './data/defaultData';
 import _ from 'lodash';
 import Search from './components/Search';
+import ToggleEl from './components/ToggleEl';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ export default class App extends React.Component {
       data: data,
       sort: 'sort',  // 'asc/desc'
       sortField: 'id', // поле по умолчанию
+      checked: "null",
     }
   }
 
@@ -29,7 +31,7 @@ export default class App extends React.Component {
   }
 
   onKeyUp = ({target}) => {
-    const cloneData = data;
+    const cloneData = this.state.data.concat();
     const filterData = _.filter(cloneData, item => {
       return (
         item.firstName.toLowerCase().includes(target.value.toLowerCase())||
@@ -42,11 +44,34 @@ export default class App extends React.Component {
     })
   }
 
+  handleCheck = () => {
+    this.setState({
+      checked: (this.state.checked==="checked")? null : "checked",
+    })
+   
+    const cloneData = this.state.data.concat();
+    const activeData = _.filter(cloneData, (item) => {
+        return item.isActive;
+    });
+    this.setState((state) => {
+      return {
+        data:(state.checked==="checked")?(activeData):(data),
+      };
+    });
+  }
+
   render() {
     return (
       <div className="container">
         <h1 className="text-center h1 m-5">Datagrid</h1>
+
         <Search onKeyUp={this.onKeyUp}/>
+
+        <ToggleEl 
+          onChange={this.handleCheck} 
+          defaultChecked={this.state.checked}
+        />
+
         <table className="table table-bordered">
           <Thead 
             cb={this.onSort}
