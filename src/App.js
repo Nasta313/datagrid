@@ -3,6 +3,7 @@ import Thead from './components/Thead';
 import Tbody from './components/Tbody';
 import { data } from './data/defaultData';
 import _ from 'lodash';
+import Search from './components/Search';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -27,10 +28,25 @@ export default class App extends React.Component {
     })
   }
 
+  onKeyUp = ({target}) => {
+    const cloneData = data;
+    const filterData = _.filter(cloneData, item => {
+      return (
+        item.firstName.toLowerCase().includes(target.value.toLowerCase())||
+        item.lastName.toLowerCase().includes(target.value.toLowerCase())||
+        item.city.toLowerCase().includes(target.value.toLowerCase())
+        )
+    });
+    this.setState({
+      data: filterData,
+    })
+  }
+
   render() {
     return (
       <div className="container">
         <h1 className="text-center h1 m-5">Datagrid</h1>
+        <Search onKeyUp={this.onKeyUp}/>
         <table className="table table-bordered">
           <Thead 
             cb={this.onSort}
