@@ -5,7 +5,12 @@ const Thead = ({ cb, sortField, sort }) => {
   return (
     <thead className="thead-dark text-center">
       <tr>
-        <th onClick={cb.bind(null, 'id')}>Rank</th>
+        <th onClick={cb.bind(null, 'rank')}>
+          <span>#</span>
+          {(sortField === 'rank') ?
+           <span className={`icon-number-${sort}`}></span> :
+           <span className='icon-sort'></span>}
+        </th>
 
         <th onClick={cb.bind(null, 'firstName')}>
           <span>First Name</span>
@@ -21,11 +26,35 @@ const Thead = ({ cb, sortField, sort }) => {
            <span className='icon-sort'></span>}
         </th>
 
-        <th onClick={cb.bind(null, 'id')}>Id</th>
-        <th onClick={cb.bind(null, 'profession')}>Profession</th>
-        <th onClick={cb.bind(null, 'city')}>City</th>
+        <th onClick={cb.bind(null, 'id')}>
+          <span>Id</span>
+          {(sortField === 'id') ?
+           <span className={`icon-number-${sort}`}></span> :
+           <span className='icon-sort'></span>}
+        </th>
+
+        <th onClick={cb.bind(null, 'profession')}>
+          <span>Profession</span>
+          {(sortField === 'profession') ?
+           <span className={`icon-${sort}`}></span> :
+           <span className='icon-sort'></span>}
+        </th>
+
+        <th onClick={cb.bind(null, 'city')}>
+          <span>Location</span>
+          {(sortField === 'city') ?
+           <span className={`icon-${sort}`}></span> :
+           <span className='icon-sort'></span>}
+        </th>
+
         <th>Is active</th>
-        <th onClick={cb.bind(null, 'phone')}>Phone</th>
+
+        <th onClick={cb.bind(null, 'mail')}>
+          <span>E-mail</span>
+          {(sortField === 'Mail') ?
+           <span className={`icon-${sort}`}></span> :
+           <span className='icon-sort'></span>}
+        </th>
       </tr>
     </thead>
   )

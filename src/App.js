@@ -13,7 +13,7 @@ export default class App extends React.Component {
     this.state = {
       data: data,
       sort: 'sort',  // 'asc/desc'
-      sortField: 'id', // поле по умолчанию
+      sortField: null,
       checked: "null",
     }
   }
@@ -31,7 +31,7 @@ export default class App extends React.Component {
   }
 
   onKeyUp = ({target}) => {
-    const cloneData = this.state.data.concat();
+    const cloneData = data;
     const filterData = _.filter(cloneData, item => {
       return (
         item.firstName.toLowerCase().includes(target.value.toLowerCase())||
@@ -62,7 +62,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <h1 className="text-center h1 m-5">Datagrid</h1>
 
         <Search onKeyUp={this.onKeyUp}/>

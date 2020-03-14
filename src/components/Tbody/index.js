@@ -1,4 +1,5 @@
 import React from 'react';
+import Marker from './../Marker';
 
 const Tbody = ({data}) => {
     return (
@@ -11,8 +12,10 @@ const Tbody = ({data}) => {
                 <td>{el.id}</td>
                 <td>{el.profession}</td>
                 <td>{el.city}</td>
-                <td>{(el.isActive)?"+":"-"}</td>
-                <td>{el.phone}</td>
+                <td>
+                  {(el.isActive)?<Marker color='#11ca0e'/>:<Marker color='#e83e8c'/>}
+                </td>
+                <td>{el.mail}</td>
             </tr>
         )}
       </tbody>

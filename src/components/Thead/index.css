@@ -17,8 +17,8 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     margin-left: .5em;
     text-align: center;
     border: 1px solid orange;
@@ -29,5 +29,5 @@
   .icon-sort:before { content: '\f0dc'; } 
   .icon-asc:before { content: '\f15d'; } 
   .icon-desc:before { content: '\f15e'; } 
-  .icon-sort-number-up:before { content: '\f162'; } 
-  .icon-sort-number-down:before { content: '\f163'; } 
+  .icon-number-asc:before { content: '\f162'; } 
+  .icon-number-desc:before { content: '\f163'; } 

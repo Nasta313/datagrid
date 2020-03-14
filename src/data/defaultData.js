@@ -5,14 +5,14 @@ faker.locale = "en";
 
 const makeFake = (index)=> {
     return {
-        'rank': index,
+        'rank': index+1,
         'firstName': faker.name.firstName(),
         'lastName': faker.name.lastName(),
         'id': 562 + index,
         'profession': faker.name.jobType(),
         'city': faker.address.city(),
         'isActive': faker.random.boolean(),
-        'phone': faker.phone.phoneNumber(),
+        'mail': faker.internet.email(),
     }
 }
-export const data = [...new Array(100)].map((_,index) => makeFake(index));
+export const data = [...new Array(1000)].map((_,index) => makeFake(index));
