@@ -1,15 +1,15 @@
 import React from 'react';
 
-const Search = ({onKeyUp}) => {
+const Search = ({cb}) => {
     return (
         <div className="row">
             <div className="col-sm-12">
                 <div className="searchbar form-group">
                     <input
                     type="text"
-                    onKeyUp={onKeyUp}
+                    onChange={cb}
                     className="form-control"
-                    placeholder="Search people by name..."
+                    placeholder="Filter people by name or location..."
                     />
                 </div>
             </div>

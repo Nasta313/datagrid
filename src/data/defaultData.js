@@ -10,9 +10,9 @@ const makeFake = (index)=> {
         'lastName': faker.name.lastName(),
         'id': 562 + index,
         'profession': faker.name.jobType(),
-        'city': faker.address.city(),
+        'location': faker.address.city(),
         'isActive': faker.random.boolean(),
         'mail': faker.internet.email(),
     }
 }
-export const data = [...new Array(1000)].map((_,index) => makeFake(index));
+export const tableData = [...new Array(1000)].map((_,index) => makeFake(index));

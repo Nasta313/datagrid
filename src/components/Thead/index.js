@@ -1,61 +1,64 @@
 import React from 'react';
 import './index.css';
+import SortPointer from '../SortPointer';
 
-const Thead = ({ cb, sortField, sort }) => {
+const Thead = ({ cb, sortField, sortDirection }) => {
+  
   return (
     <thead className="thead-dark text-center">
       <tr>
-        <th onClick={cb.bind(null, 'rank')}>
+
+        <th id="rank" onClick={cb} >
           <span>#</span>
           {(sortField === 'rank') ?
-           <span className={`icon-number-${sort}`}></span> :
-           <span className='icon-sort'></span>}
+           <SortPointer sortDirection={sortDirection} type = "number"/> :
+           <SortPointer sortDirection="sort" type = "default"/>}
         </th>
-
-        <th onClick={cb.bind(null, 'firstName')}>
+    
+        <th id="firstName" onClick={cb} >
           <span>First Name</span>
           {(sortField === 'firstName') ?
-           <span className={`icon-${sort}`}></span> :
-           <span className='icon-sort'></span>}
+           <SortPointer sortDirection={sortDirection} type = "letter"/> :
+           <SortPointer sortDirection="sort" type = "default"/>}
         </th>
 
-        <th onClick={cb.bind(null, 'lastName')}>
+        <th id="lastName" onClick={cb}>
           <span>Last Name</span>
           {(sortField === 'lastName') ?
-           <span className={`icon-${sort}`}></span> :
-           <span className='icon-sort'></span>}
+           <SortPointer sortDirection={sortDirection} type = "letter"/> :
+           <SortPointer sortDirection="sort" type = "default"/>}
         </th>
 
-        <th onClick={cb.bind(null, 'id')}>
+        <th id='id' onClick={cb}>
           <span>Id</span>
           {(sortField === 'id') ?
-           <span className={`icon-number-${sort}`}></span> :
-           <span className='icon-sort'></span>}
+           <SortPointer sortDirection={sortDirection} type = "number"/> :
+           <SortPointer sortDirection="sort" type = "default"/>}
         </th>
 
-        <th onClick={cb.bind(null, 'profession')}>
+        <th id='profession' onClick={cb}>
           <span>Profession</span>
           {(sortField === 'profession') ?
-           <span className={`icon-${sort}`}></span> :
-           <span className='icon-sort'></span>}
+           <SortPointer sortDirection={sortDirection} type = "letter"/> :
+           <SortPointer sortDirection="sort" type = "default"/>}
         </th>
 
-        <th onClick={cb.bind(null, 'city')}>
+        <th id='location' onClick={cb}>
           <span>Location</span>
-          {(sortField === 'city') ?
-           <span className={`icon-${sort}`}></span> :
-           <span className='icon-sort'></span>}
+          {(sortField === 'location') ?
+          <SortPointer sortDirection={sortDirection} type = "letter"/> :
+          <SortPointer sortDirection="sort" type = "default"/>}
         </th>
 
         <th>Is active</th>
 
-        <th onClick={cb.bind(null, 'mail')}>
+        <th id='mail' onClick={cb}>
           <span>E-mail</span>
-          {(sortField === 'Mail') ?
-           <span className={`icon-${sort}`}></span> :
-           <span className='icon-sort'></span>}
+          {(sortField === 'mail') ?
+           <SortPointer sortDirection={sortDirection} type = "letter"/> :
+           <SortPointer sortDirection="sort" type = "default"/>}
         </th>
-      </tr>
+        </tr>
     </thead>
   )
 }

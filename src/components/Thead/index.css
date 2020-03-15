@@ -26,8 +26,8 @@
     background-color: orange;
     color:black;
   }
-  .icon-sort:before { content: '\f0dc'; } 
-  .icon-asc:before { content: '\f15d'; } 
-  .icon-desc:before { content: '\f15e'; } 
+  .icon-default-sort:before { content: '\f0dc'; } 
+  .icon-letter-asc:before { content: '\f15d'; } 
+  .icon-letter-desc:before { content: '\f15e'; } 
   .icon-number-asc:before { content: '\f162'; } 
   .icon-number-desc:before { content: '\f163'; } 

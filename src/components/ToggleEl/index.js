@@ -1,12 +1,12 @@
 import React from 'react';
 
-const ToggleEl = ({checked, onChange}) => {
+const ToggleEl = ({checkedActive, onChange}) => {
     return (
         <div className="custom-control custom-switch mb-3">
             <input type="checkbox"
                 className="custom-control-input"
                 id="isActiveSwitch"
-                checked={checked}
+                defaultChecked={checkedActive}
                 onChange={onChange}
             />
             <label 
