@@ -13,14 +13,15 @@ import { tableData } from './data/defaultData';
 export const ACTION_CHANGE_TABLE_DATA= 'ACTION_CHANGE_TABLE_DATA';
 export const ACTION_CHANGE_SORT_DIRECTION = 'ACTION_CHANGE_SORT_DIRECTION';
 export const ACTION_CHANGE_SORT_FIELD = 'ACTION_CHANGE_SORT_FIELD';
-export const ACTION_CHANGE_STATE_CHEKED_ACTIVE= 'ACTION_CHANGE_STATE_CHEKED_ACTIVE';
-
+export const ACTION_CHANGE_STATE_CHEKED_ACTIVE = 'ACTION_CHANGE_STATE_CHEKED_ACTIVE';
+export const ACTION_CHANGE_SELECTED_OPTIONS = "ACTION_CHANGE_SELECTED_OPTIONS"
 
 const initialState = { 
     tableData: tableData,
     sortDirection: 'sort',
     sortField: null,
-    checkedActive: null
+    checkedActive: null,
+    selectedOption: null
 }
 
 export const store = createStore(rootReducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

@@ -15,7 +15,7 @@ const Tbody = ({data}) => {
                 <td>
                   {(el.isActive)?<Marker color='#11ca0e'/>:<Marker color='#e83e8c'/>}
                 </td>
-                <td>{el.mail}</td>
+                <td>{el.enum}</td>
             </tr>
         )}
       </tbody>

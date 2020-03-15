@@ -9,7 +9,7 @@ const Search = ({cb}) => {
                     type="text"
                     onChange={cb}
                     className="form-control"
-                    placeholder="Filter people by name or location..."
+                    placeholder="Filter..."
                     />
                 </div>
             </div>

@@ -9,7 +9,6 @@ const Thead = ({ cb, sortField, sortDirection }) => {
       <tr>
 
         <th id="rank" onClick={cb} >
-          <span>#</span>
           {(sortField === 'rank') ?
            <SortPointer sortDirection={sortDirection} type = "number"/> :
            <SortPointer sortDirection="sort" type = "default"/>}
@@ -52,12 +51,7 @@ const Thead = ({ cb, sortField, sortDirection }) => {
 
         <th>Is active</th>
 
-        <th id='mail' onClick={cb}>
-          <span>E-mail</span>
-          {(sortField === 'mail') ?
-           <SortPointer sortDirection={sortDirection} type = "letter"/> :
-           <SortPointer sortDirection="sort" type = "default"/>}
-        </th>
+        <th id='enum'> Enum</th>
         </tr>
     </thead>
   )

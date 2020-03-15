@@ -12,7 +12,7 @@ const makeFake = (index)=> {
         'profession': faker.name.jobType(),
         'location': faker.address.city(),
         'isActive': faker.random.boolean(),
-        'mail': faker.internet.email(),
+        'enum': faker.random.arrayElement(["one", "two", "three"]),
     }
 }
 export const tableData = [...new Array(1000)].map((_,index) => makeFake(index));

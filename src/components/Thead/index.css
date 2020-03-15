@@ -21,10 +21,9 @@
     height: 1.5rem;
     margin-left: .5em;
     text-align: center;
-    border: 1px solid orange;
+    border: 1px solid #007bff;
     border-radius: 50%;
-    background-color: orange;
-    color:black;
+    color:#007bff;
   }
   .icon-default-sort:before { content: '\f0dc'; } 
   .icon-letter-asc:before { content: '\f15d'; } 
