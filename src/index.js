@@ -17,11 +17,21 @@ export const ACTION_CHANGE_STATE_CHEKED_ACTIVE = 'ACTION_CHANGE_STATE_CHEKED_ACT
 export const ACTION_CHANGE_SELECTED_OPTIONS = "ACTION_CHANGE_SELECTED_OPTIONS"
 
 const initialState = { 
-    tableData: tableData,
-    sortDirection: 'sort',
-    sortField: null,
-    checkedActive: null,
-    selectedOption: null
+    tableData: (localStorage.getItem("dataTable"))?
+        JSON.parse(localStorage.getItem("dataTable")):
+        tableData,
+    sortDirection: (localStorage.getItem("sortDirection"))?
+        JSON.parse(localStorage.getItem("sortDirection")):
+        'sort',
+    sortField: (localStorage.getItem("sortField"))?
+        JSON.parse(localStorage.getItem("sortField")):
+        null,
+    checkedActive: (localStorage.getItem("checkedActive"))?
+        JSON.parse(localStorage.getItem("checkedActive")):
+        null,
+    selectedOption: (localStorage.getItem("selectedOption"))?
+        JSON.parse(localStorage.getItem("selectedOption")):
+        null,
 }
 
 export const store = createStore(rootReducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

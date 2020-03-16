@@ -22,57 +22,84 @@ const options = [
   { value: 'three', label: 'Three' },
 ];
 
+
+
 export class App extends React.Component {
     
     onSelectOption = (selectedOption) => {
         const { changeSelectedOptions, changeTableData, tableData } = this.props;
         changeSelectedOptions(selectedOption);
-        const cloneData = tableData.concat();
-        console.log(selectedOption);
+        let cloneData = tableData.concat();
+        
         const selected = (selectedOption)?(selectedOption.value):"";
-        const filterData = _.filter(cloneData, item => {
+        cloneData = _.filter(cloneData, item => {
             return item.enum.includes(selected);
         });
-        changeTableData(filterData);
+        changeTableData(cloneData);
+        localStorage.setItem("dataTable", JSON.stringify(cloneData));
+        localStorage.setItem("selectedOption", JSON.stringify(selectedOption));
     };
 
     onSort = (fieldName) => {
         const { changeSortField, changeSortDirection, changeTableData, sortDirection, tableData } = this.props;
         const sortType = sortDirection === 'asc' ? 'desc' : 'asc';
-        const cloneData = tableData.concat();
-        const orderedData = _.orderBy(cloneData, fieldName, sortType);
+        let cloneData = tableData.concat();
+        cloneData = _.orderBy(cloneData, fieldName, sortType);
         changeSortField(fieldName);
-        changeTableData(orderedData);
+        changeTableData(cloneData);
         changeSortDirection(sortType);
+
+        localStorage.setItem("dataTable", JSON.stringify(cloneData));
+        localStorage.setItem("sortDirection", JSON.stringify(sortType));
+        localStorage.setItem("sortField", JSON.stringify(fieldName));
     }
     
-    onFilter = ({target}) => {
+    onFilter = ({ target }) => {
         const { changeTableData, tableData} = this.props;
-        const cloneData = tableData.concat();
-        const filterData = _.filter(cloneData, item => {
+        const targetEl = target.value.toLowerCase();
+        let cloneData = tableData.concat();
+        cloneData = _.filter(cloneData, item => { 
           return (
-            item.firstName.toLowerCase().includes(target.value.toLowerCase())||
-            item.lastName.toLowerCase().includes(target.value.toLowerCase())||
-            item.location.toLowerCase().includes(target.value.toLowerCase())
+            item.firstName.toLowerCase().includes(targetEl)||
+            item.lastName.toLowerCase().includes(targetEl)||
+            item.location.toLowerCase().includes(targetEl)
             )
         });
-        changeTableData(filterData);
+        changeTableData(cloneData);
+
+        localStorage.setItem("dataTable", JSON.stringify(cloneData));
     }
 
     onActive = () => {
         const { changeTableData, checkedActive, changeStateCheckedActive} = this.props;
-        const stateActive = (checkedActive) ? null : true;
+        const stateActive = !checkedActive;
         changeStateCheckedActive(stateActive);
+    
         const dataFromProps = this.props.tableData;
-        const cloneData = dataFromProps.concat();
-        const activeData = _.filter(cloneData, item => item.isActive);
-        (stateActive)?changeTableData(activeData):changeTableData(tableData);
+        let cloneData = dataFromProps.concat();
+        cloneData = _.filter(cloneData, item => item.isActive);
+        (stateActive)?
+            changeTableData(cloneData):
+            changeTableData(tableData);
+
+        localStorage.setItem("dataTable", JSON.stringify(cloneData));
+        localStorage.setItem("checkedActive", JSON.stringify(stateActive));
     }
+
     onReset = () => {
-        const { changeTableData} = this.props;
-        console.log("ddd")
+        const { changeTableData, changeSelectedOptions, changeStateCheckedActive, changeSortField, changeSortDirection } = this.props;
         changeTableData(tableData);
+        changeSelectedOptions(null);
+        changeStateCheckedActive(null);
+        changeSortField(null);
+        changeSortDirection("sort");
+        localStorage.setItem("dataTable", JSON.stringify(tableData));
+        localStorage.setItem("checkedActive", null);
+        localStorage.setItem("sortDirection", "sort");
+        localStorage.setItem("sortField", null);
+        localStorage.setItem("selectedOption", null);
     }
+   
 
     render(){
         const {tableData, sortDirection, sortField, checkedActive, selectedOption } = this.props;
@@ -102,6 +129,7 @@ export class App extends React.Component {
                             <ToggleEl 
                                 onChange={this.onActive} 
                                 checkedActive={checkedActive}
+                                
                             />
                         </div>
                         <div className="col-2">

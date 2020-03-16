@@ -11,6 +11,7 @@ const Search = ({cb}) => {
                     className="form-control"
                     placeholder="Filter..."
                     />
+                    
                 </div>
             </div>
         </div>
